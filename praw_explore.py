@@ -130,16 +130,6 @@ Get a keyword count for each bottle.
 filter puncuation and get word list.
 """
 
-cupcake = """
-Sweet cake halvah wafer muffin pie cake jelly-o. Chupa chups cookie pastry
- toffee sweet roll wafer. Bear claw marshmallow oat cake. Sugar plum marzipan
-  gummies. Oat cake candy muffin cotton candy. Muffin tart jujubes chocolate
-  liquorice. Bear claw candy canes chupa chups. Fruitcake chocolate bar candy
-  canes donut. Gingerbread sesame snaps pastry tiramisu apple pie biscuit
-   chocolate candy. Cotton candy sesame snaps fruitcake. Cupcake chocolate
-   cake cupcake sweet roll lemon drops tart chupa chups jujubes. Ice cream
-   sesame snaps marzipan sweet roll soufflé chupa chups."""
-
 def remove_punc(text):
     translator = str.maketrans({key: None for key in string.punctuation + '*'})
     return text.translate(translator)
@@ -151,8 +141,3 @@ def counter_count(text):
     filtered_words = [x for x in words if x not in stopwords]
     counted = Counter(filtered_words)
     return sorted(counted.items(), key=lambda x: x[1], reverse=True)
-
-
-with open("description_tags.txt", "w") as file:
-    for c in counted[:500]:
-        file.write(c[0] + '\n')
